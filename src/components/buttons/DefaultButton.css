@@ -4,9 +4,10 @@
     border-radius: 6px;
     border-style: groove;
     padding: 16px;
+    padding-inline: 32px;
     font-weight: 500;
     border-color: rgb(198, 199, 199);
-    font-size: 22px;
+    font-size: 20px;
     color: white;
     cursor: pointer;
   }

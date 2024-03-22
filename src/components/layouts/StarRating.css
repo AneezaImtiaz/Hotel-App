@@ -1,0 +1,8 @@
+.star {
+  font-size: 22px; /* Adjust the size as per your requirement */
+  color: grey; /* Default color for empty stars */
+}
+  
+.star.filled {
+  color: black; /* Color for filled stars */
+}

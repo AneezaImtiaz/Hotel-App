@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { Loader, DefaultButton, MessageDialog } from '../components';
+import { Loader, DefaultButton, MessageDialog, HotelCard } from '../components';
 import { hotelList } from '../graphql/queries';
 import { LOAD_HOTELS, ERROR_DIALOG, TRY_AGAIN, CLOSE } from '../utils/Constants';
+import { hotelItem } from '../components/cards/HotelCard';
 import './HomeScreen.css';
 
 type HomeScreenProps = {};
@@ -25,13 +26,20 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     );
   };
 
+  const renderItem = (item: hotelItem) => {
+    return (<HotelCard item={item} />);
+  };
+
   return (
     <div className='container'>
-      <DefaultButton disabled={data ? true : false} text={LOAD_HOTELS} buttonClick={() => getHotels()} />
+      <div className='button-container'>
+        <DefaultButton disabled={data ? true : false} text={LOAD_HOTELS} buttonClick={() => getHotels()} />
+      </div>
       {showErrorDialog && renderErrorConnectionDialog()}
       {loading ?
         <Loader />
-        : null}
+        : data?.hotelCollection?.items.map((item: any) => renderItem(item))
+      }
     </div>
 
   );
