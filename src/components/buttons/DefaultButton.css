@@ -1,0 +1,22 @@
+  .button {
+    background-color: #a0c9d7;
+    align-self: center;
+    border-radius: 6px;
+    border-style: groove;
+    padding: 16px;
+    font-weight: 500;
+    border-color: rgb(198, 199, 199);
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    color: #757879;
+  }
+
+  .button:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    cursor: not-allowed;
+  }
