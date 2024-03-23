@@ -19,10 +19,29 @@ export const hotelList = gql`
         price
         imagesCollection {
           items {
-						url
+            url
           }
         }
       }
     }
   }
 `;
+
+
+export const reviewList = gql`
+  query getReviews($id: String) {
+    reviewCollection(where: { hotel: { sys: { id: $id } }}) {
+      items {
+        customer {
+          firstName
+          lastName
+        }
+        feedback
+        comment {
+          json
+        }
+      }
+    }
+  }
+`;
+

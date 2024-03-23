@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageGallery, StarRating } from '../layouts';
+import { ImageGallery, StarRating, Review } from '../layouts';
 import { DefaultButton } from '../buttons';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { SHOW_REVIEWS, HIDE_REVIEWS } from '../../utils/Constants';
@@ -42,27 +42,30 @@ const HotelCard: React.FC<HotelCardProps> = ({ item }) => {
     };
 
     return (
-        <div className="card-container">
-            <div className="image-container">
-                <ImageGallery images={item?.imagesCollection?.items} />
-            </div>
-            <div className="inner-content">
-                <div className="hotel-header">
-                    <div>
-                        <h2 className='name'>{item?.name}</h2>
-                        <p className='country'>{`${item?.city} - ${item?.country}`}</p>
-                    </div>
-                    <StarRating rating={item?.rating} />
+        <div className='card-container'>
+            <div className="card-content">
+                <div className="image-container">
+                    <ImageGallery images={item?.imagesCollection?.items} />
                 </div>
-                <p className='description'>{documentToPlainTextString(item?.description?.json)}</p>
-                <div className="hotel-header">
-                    <DefaultButton disabled={isReviewsShow} text={isReviewsShow ? HIDE_REVIEWS : SHOW_REVIEWS} buttonClick={() => onReviewShow()} />
-                    <div>
-                        <p className='price'>{`${item?.price?.value} ${item?.price?.symbol}`}</p>
-                        <p className='country'>{`${format(new Date(item?.startDate), "dd-MM-yyyy")} - ${format(new Date(item?.endDate), "dd-MM-yyyy")}`}</p>
+                <div className="inner-content">
+                    <div className="hotel-header">
+                        <div>
+                            <h2 className='name'>{item?.name}</h2>
+                            <p className='country'>{`${item?.city} - ${item?.country}`}</p>
+                        </div>
+                        <StarRating rating={item?.rating} />
+                    </div>
+                    <p className='description'>{documentToPlainTextString(item?.description?.json)}</p>
+                    <div className="hotel-header">
+                        <DefaultButton text={isReviewsShow ? HIDE_REVIEWS : SHOW_REVIEWS} buttonClick={() => onReviewShow()} />
+                        <div>
+                            <p className='price'>{`${item?.price?.value} ${item?.price?.symbol}`}</p>
+                            <p className='country'>{`${format(new Date(item?.startDate), "dd-MM-yyyy")} - ${format(new Date(item?.endDate), "dd-MM-yyyy")}`}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            {isReviewsShow && <Review dismissReviewContainer={() => { setIsReviewsShow(false); }} specificSysId={item?.sys?.id} />}
         </div>
     );
 };

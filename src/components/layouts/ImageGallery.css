@@ -1,6 +1,6 @@
   .image {
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
       align-items: center;
       justify-content: space-between;
       display: flex;

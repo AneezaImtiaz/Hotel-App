@@ -10,6 +10,11 @@ export const ERROR_DIALOG = {
   description: 'Connection to the server failed. Please try again shortly.',
 } as const;
 
+export const NO_REVIEW_DIALOG = {
+  title: 'No Review',
+  description: 'Currently, no reviews available for this hotel.',
+} as const;
+
 export const ROUTES = {
   home: 'Home',
 } as const;
