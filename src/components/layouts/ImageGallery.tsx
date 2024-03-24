@@ -4,7 +4,7 @@ import forwardIcon from '../../assets/icons/forward.png';
 import './ImageGallery.css';
 
 interface ImageGalleryProps {
-  images: [{ url: string }];
+  images: { url: string }[];
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
@@ -19,7 +19,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
   };
 
   return (
-    <div className="image" style={{
+    <div data-testid="imageGallery" className="image" style={{
       backgroundImage: `url(${images[currentImageIndex]?.url})`, backgroundPosition: 'center',
       backgroundSize: 'cover',
     }}>

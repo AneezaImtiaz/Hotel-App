@@ -24,9 +24,9 @@ export type hotelItem = {
         symbol: string,
     };
     imagesCollection: {
-        items: [{
+        items: {
             url: string;
-        }];
+        }[];
     };
 };
 
